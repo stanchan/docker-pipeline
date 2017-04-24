@@ -1,0 +1,92 @@
+version: '2'
+services:
+  jenkins-caddy:
+    build: jenkins-caddy
+    container_name: jenkins-caddy
+    environment:
+      CADDY_TLS_MODE: caddy_tls_selfsigned
+    ports:
+      - "80:80"
+      - "443:443"
+      - "2015:2105"
+    networks:
+      test:
+        aliases:
+          - jenkins
+          - nexus
+    volumes:
+      - ./data/caddy:/root/.caddy
+  jenkins-hashicorp-virtualbox-slave:
+    container_name: jenkins-hashicorp-virtualbox-slave
+    build: jenkins-hashicorp-virtualbox-slave
+    environment:
+      JENKINS_NAME: jenkins-hashicorp-virtualbox-slave
+      JENKINS_SCHEME: http
+      JENKINS_SERVER: jenkins-master
+      JENKINS_SLAVE_PORT: 8080
+      JENKINS_EXECUTORS: 2
+    networks:
+      test:
+        aliases:
+          - jenkins-docker-slave
+  jenkins-golang-slave:
+    container_name: jenkins-golang-slave
+    build: jenkins-golang-slave
+    environment:
+      JENKINS_NAME: jenkins-golang-slave
+      JENKINS_SCHEME: http
+      JENKINS_SERVER: jenkins-master
+      JENKINS_SLAVE_PORT: 8080
+      JENKINS_EXECUTORS: 2
+    networks:
+      test:
+        aliases:
+          - jenkins-golang-slave
+  jenkins-swarm-slave:
+    container_name: jenkins-swarm-slave
+    build: jenkins-swarm-slave
+    environment:
+      JENKINS_NAME: jenkins-swarm-slave
+      JENKINS_SCHEME: http
+      JENKINS_SERVER: jenkins-master
+      JENKINS_SLAVE_PORT: 8080
+      JENKINS_EXECUTORS: 2
+    networks:
+      test:
+        aliases:
+          - jenkins-swarm-slave
+  jenkins-docker-slave:
+    container_name: jenkins-docker-slave
+    build: jenkins-docker-slave
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker:/var/lib/docker
+    networks:
+      test:
+        aliases:
+          - jenkins-docker-slave
+  nexus:
+    build: nexus
+    container_name: nexus
+    ports:
+      - "8081:8081"
+    networks:
+      test:
+        aliases:
+          - nexus-master
+  jenkins-master:
+    build: jenkins-master
+    container_name: jenkins-master
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    networks:
+      test:
+        aliases:
+          - jenkins-master
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /var/lib/docker:/var/lib/docker
+networks:
+  test:
+    driver: bridge

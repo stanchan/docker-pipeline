@@ -1,0 +1,18 @@
+{
+	"jenkins-slave": {
+		"port": "22",
+		"username": "jenkins",
+		"description": "my test slave",
+		"remotefs": "/tmp",
+		"labels": "jenkinsslave",
+		"credid": "slave-key"
+	},
+	"jenkins-docker-slave": {
+		"port": "22",
+		"username": "jenkins",
+		"description": "my docker test slave",
+		"remotefs": "/tmp",
+		"labels": "jenkinsdockerslave",
+		"credid": "slave-key"
+	}
+}

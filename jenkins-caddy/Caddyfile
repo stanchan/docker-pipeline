@@ -1,0 +1,25 @@
+jenkins:443 {
+    proxy / jenkins-master:8080 {
+        transparent
+        max_fails 10
+        fail_timeout 30s
+        keepalive 1
+    }
+    import /etc/caddy/sslmodes/{$CADDY_TLS_MODE}
+    timeouts 5m
+    log stdout
+    errors stdout
+}
+
+nexus:443 {
+    proxy / nexus-master:8081 {
+        transparent
+        max_fails 10
+        fail_timeout 30s
+        keepalive 1
+    }
+    import /etc/caddy/sslmodes/{$CADDY_TLS_MODE}
+    timeouts 5m
+    log stdout
+    errors stdout
+}

@@ -1,0 +1,8 @@
+{
+	"bocabaton": {
+		"file": "/jobs/bocabaton.xml"
+	},
+	"ubercicd": {
+		"file": "/jobs/ubercicd.xml"
+	}
+}

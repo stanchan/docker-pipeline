@@ -1,0 +1,20 @@
+{
+	"dockercloud-echo-job": {
+		"file": "/jobs/docker.xml"
+	},
+	"docker-echo-job": {
+		"file": "/jobs/docker-echo-job.xml"
+	},
+	"simple_jenkins_job": {
+		"file": "/jobs/simple_jenkins_job.xml"
+	},
+	"workflow_docker": {
+		"file": "/jobs/workflow_docker.xml"
+	},
+	"docker_build": {
+		"file": "/jobs/docker_build.xml"
+	},
+	"simple_jenkins_swarm_job": {
+		"file": "/jobs/simple_jenkins_swarm_job.xml"
+	}
+}
