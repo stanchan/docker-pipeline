@@ -13,8 +13,8 @@
   <buildsDir>${ITEM_ROOTDIR}/builds</buildsDir>
   <jdks>
     <jdk>
-      <name>SunJDK 1.8.0_121</name>
-      <home>/usr/java/jdk1.8.0_121</home>
+      <name>SunJDK 1.8.0_131</name>
+      <home>/usr/java/jdk1.8.0_131</home>
       <properties/>
     </jdk>
   </jdks>
