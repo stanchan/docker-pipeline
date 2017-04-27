@@ -31,7 +31,7 @@
 FROM centos:centos7
 MAINTAINER Stan Chan <stanchan@gmail.com>
 
-ENV nexusversion="3.2.1-01" \
+ENV nexusversion="3.3.0-01" \
     os="centos" \
     osversion="7"
 
@@ -54,7 +54,7 @@ RUN yum -y install \
   which \
   && yum clean all
 
-ARG NEXUS_VERSION=3.2.1-01
+ARG NEXUS_VERSION=3.3.0-01
 ARG NEXUS_DOWNLOAD_URL=https://download.sonatype.com/nexus/3/nexus-${NEXUS_VERSION}-unix.tar.gz
 
 ENV JAVA_HOME=/usr/java \

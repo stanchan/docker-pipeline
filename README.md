@@ -1,4 +1,4 @@
-# Pipeline Docker Image
+# Pipeline Docker
 
 Pipeline Delivery Framework.
 
